@@ -6,3 +6,4 @@ psycopg
 psycopg-binary
 dj-database-url
 google-genai
+whitenoise
