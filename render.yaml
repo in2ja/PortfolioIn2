@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: induja-portfolio
+    runtime: python
+
+    buildCommand: ./build.sh
+
+    startCommand: gunicorn portfolio.wsgi:application
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.6
+
+      - key: OPENAI_API_KEY
+        sync: false

@@ -1,0 +1,774 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Projects | Induja{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<main class="projects-page">
+
+    <!-- =====================================================
+         PROJECTS HERO
+    ====================================================== -->
+
+    <section class="projects-hero">
+
+        <div class="hero-label">
+            <span class="hero-dot"></span>
+            MY PROJECTS
+        </div>
+
+        <h1>
+            Things I've
+            <span>built.</span>
+        </h1>
+
+        <p>
+            A collection of web applications and digital experiences
+            I've built using Python, Django, JavaScript, React,
+            HTML, CSS and SQL.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECTS SECTION
+    ====================================================== -->
+
+    <section class="projects-section">
+
+        <div class="projects-heading">
+
+            <h2>
+                Turning ideas into
+                <strong>working applications.</strong>
+            </h2>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <!-- =================================================
+                 PROJECT 01
+                 EVENT MANAGEMENT
+            ================================================== -->
+
+            <article class="project-card">
+
+                <div class="project-image-slider">
+
+                    <div class="slides">
+
+                        <img
+                            src="{% static 'images/projects/event-1.png' %}"
+                            class="project-slide active"
+                            alt="Event Management Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/event-2.png' %}"
+                            class="project-slide"
+                            alt="Event Management Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/event-3.png' %}"
+                            class="project-slide"
+                            alt="Event Management Website screenshot"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn prev"
+                        onclick="changeSlide(this, -1)"
+                        aria-label="Previous screenshot"
+                    >
+                        ‹
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn next"
+                        onclick="changeSlide(this, 1)"
+                        aria-label="Next screenshot"
+                    >
+                        ›
+                    </button>
+
+
+                    <div class="slide-dots"></div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            01
+                        </span>
+
+                        <span class="project-type">
+                            Django Web Application
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Event Management Website
+                    </h3>
+
+
+                    <p>
+                        Built an event management website with event
+                        listing, enquiry and booking workflows,
+                        Django forms and models, and database-backed
+                        CRUD functionality.
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span>Django</span>
+                        <span>Python</span>
+                        <span>HTML/CSS</span>
+                        <span>JavaScript</span>
+                        <span>SQL</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://mp-lnz0.onrender.com"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Project
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 02
+                 PARLOUR BOOKING
+            ================================================== -->
+
+            <article class="project-card">
+
+                <div class="project-image-slider">
+
+                    <div class="slides">
+
+                        <img
+                            src="{% static 'images/projects/parlour-1.png' %}"
+                            class="project-slide active"
+                            alt="Parlour Booking Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/parlour-2.png' %}"
+                            class="project-slide"
+                            alt="Parlour Booking Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/parlour-3.png' %}"
+                            class="project-slide"
+                            alt="Parlour Booking Website screenshot"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn prev"
+                        onclick="changeSlide(this, -1)"
+                        aria-label="Previous screenshot"
+                    >
+                        ‹
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn next"
+                        onclick="changeSlide(this, 1)"
+                        aria-label="Next screenshot"
+                    >
+                        ›
+                    </button>
+
+
+                    <div class="slide-dots"></div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            02
+                        </span>
+
+                        <span class="project-type">
+                            Booking Application
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Parlour Booking Website
+                    </h3>
+
+
+                    <p>
+                        Developed a booking-focused web application
+                        for a parlour and salon workflow with
+                        customer-facing pages and deployment-ready
+                        Django functionality.
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span>Django</span>
+                        <span>Python</span>
+                        <span>HTML/CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://luxesalon-yawb.onrender.com/"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Project
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 03
+                 PAYGEN
+            ================================================== -->
+
+            <article class="project-card">
+
+                <div class="project-image-slider">
+
+                    <div class="slides">
+
+                        <img
+                            src="{% static 'images/projects/paygen-1.png' %}"
+                            class="project-slide active"
+                            alt="PayGen Payslip Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/paygen-2.png' %}"
+                            class="project-slide"
+                            alt="PayGen Payslip Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/paygen-3.png' %}"
+                            class="project-slide"
+                            alt="PayGen Payslip Website screenshot"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn prev"
+                        onclick="changeSlide(this, -1)"
+                        aria-label="Previous screenshot"
+                    >
+                        ‹
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn next"
+                        onclick="changeSlide(this, 1)"
+                        aria-label="Next screenshot"
+                    >
+                        ›
+                    </button>
+
+
+                    <div class="slide-dots"></div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            03
+                        </span>
+
+                        <span class="project-type">
+                            Payroll Application
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        PayGen Payslip Website
+                    </h3>
+
+
+                    <p>
+                        Built a payroll and payslip web application
+                        supporting payslip generation, payslip history
+                        and payslip preview workflows.
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span>JavaScript</span>
+                        <span>HTML/CSS</span>
+                        <span>Vercel</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://pay-gen-seven.vercel.app/"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Project
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 04
+                 FOODFLOW
+            ================================================== -->
+
+            <article class="project-card">
+
+                <div class="project-image-slider">
+
+                    <div class="slides">
+
+                        <img
+                            src="{% static 'images/projects/foodflow-1.png' %}"
+                            class="project-slide active"
+                            alt="FoodFlow Food Delivery App screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/foodflow-2.png' %}"
+                            class="project-slide"
+                            alt="FoodFlow menu screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/foodflow-3.png' %}"
+                            class="project-slide"
+                            alt="FoodFlow cart screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/foodflow-4.png' %}"
+                            class="project-slide"
+                            alt="FoodFlow order tracking screenshot"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn prev"
+                        onclick="changeSlide(this, -1)"
+                        aria-label="Previous screenshot"
+                    >
+                        ‹
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn next"
+                        onclick="changeSlide(this, 1)"
+                        aria-label="Next screenshot"
+                    >
+                        ›
+                    </button>
+
+
+                    <div class="slide-dots"></div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            04
+                        </span>
+
+                        <span class="project-type">
+                            React Application
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        FoodFlow – Food Delivery App
+                    </h3>
+
+
+                    <p>
+                        Created a responsive food delivery application
+                        with menu, cart, checkout, order tracking,
+                        profile and order history interfaces.
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span>React</span>
+                        <span>JavaScript</span>
+                        <span>HTML/CSS</span>
+                        <span>Vercel</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://food-flow-seven.vercel.app/"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Project
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 05
+                 GROCO
+            ================================================== -->
+
+            <article class="project-card">
+
+                <div class="project-image-slider">
+
+                    <div class="slides">
+
+                        <img
+                            src="{% static 'images/projects/groco-1.png' %}"
+                            class="project-slide active"
+                            alt="GroCo Grocery Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/groco-2.png' %}"
+                            class="project-slide"
+                            alt="GroCo Grocery Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/groco-3.png' %}"
+                            class="project-slide"
+                            alt="GroCo Grocery Website screenshot"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn prev"
+                        onclick="changeSlide(this, -1)"
+                        aria-label="Previous screenshot"
+                    >
+                        ‹
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn next"
+                        onclick="changeSlide(this, 1)"
+                        aria-label="Next screenshot"
+                    >
+                        ›
+                    </button>
+
+
+                    <div class="slide-dots"></div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            05
+                        </span>
+
+                        <span class="project-type">
+                            Frontend Website
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        GroCo Grocery Website
+                    </h3>
+
+
+                    <p>
+                        Developed a grocery and organic-produce website
+                        based on a modern UI design, focusing on responsive
+                        layouts and user-friendly product presentation.
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Vercel</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://grocery-alpha-mocha.vercel.app/"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Project
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PROJECT 06
+                 URBANNEST
+            ================================================== -->
+
+            <article class="project-card">
+
+                <div class="project-image-slider">
+
+                    <div class="slides">
+
+                        <img
+                            src="{% static 'images/projects/urbannest-1.png' %}"
+                            class="project-slide active"
+                            alt="UrbanNest Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/urbannest-2.png' %}"
+                            class="project-slide"
+                            alt="UrbanNest Website screenshot"
+                        >
+
+                        <img
+                            src="{% static 'images/projects/urbannest-3.png' %}"
+                            class="project-slide"
+                            alt="UrbanNest Website screenshot"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn prev"
+                        onclick="changeSlide(this, -1)"
+                        aria-label="Previous screenshot"
+                    >
+                        ‹
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="slide-btn next"
+                        onclick="changeSlide(this, 1)"
+                        aria-label="Next screenshot"
+                    >
+                        ›
+                    </button>
+
+
+                    <div class="slide-dots"></div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            06
+                        </span>
+
+                        <span class="project-type">
+                            Frontend Website
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        UrbanNest Website
+                    </h3>
+
+
+                    <p>
+                        Developed the UrbanNest website from a provided
+                        Figma prototype, translating the design into a
+                        responsive frontend using HTML, CSS and JavaScript.
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>GitHub Pages</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://in2ja.github.io/Urbannest/"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Project
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECT CTA
+    ====================================================== -->
+
+    <section class="projects-cta">
+
+        <div class="cta-content">
+
+            <span>
+                HAVE AN IDEA?
+            </span>
+
+            <h2>
+                Let's build something
+                <strong>meaningful.</strong>
+            </h2>
+
+            <p>
+                Have a project or opportunity in mind?
+                I'd love to hear about it.
+            </p>
+
+        </div>
+
+
+        <a href="{% url 'contact' %}">
+            Let's Connect
+            <span>→</span>
+        </a>
+
+    </section>
+
+
+</main>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="{% static 'js/projects.js' %}"></script>
+
+{% endblock %}

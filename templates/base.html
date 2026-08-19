@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Induja R | Python Full Stack Developer
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-logo">
+            <a href="{% url 'home' %}">
+                Induja.R
+            </a>
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="{% url 'home' %}"
+               class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                Home
+            </a>
+
+            <a href="{% url 'about' %}"
+               class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                About
+            </a>
+
+            <a href="{% url 'projects' %}"
+               class="{% if request.resolver_match.url_name == 'projects' %}active{% endif %}">
+                Projects
+            </a>
+
+            <a href="{% url 'contact' %}"
+               class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= PAGE CONTENT ================= -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Induja R. All rights reserved.
+        </p>
+
+        <p class="made-with">
+
+            Made with
+
+            <span class="heart">
+                ♥
+            </span>
+
+            and
+
+            <span class="code-symbol">
+                &lt;/&gt;
+            </span>
+
+            by
+
+            <span class="footer-name">
+                Induja
+            </span>
+
+        </p>
+
+        <a href="#" class="back-top">
+            ↑ Top
+        </a>
+
+    </div>
+
+</footer>
+
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

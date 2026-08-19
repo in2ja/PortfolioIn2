@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home | Induja
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="home-page">
+
+    <!-- HERO -->
+    <section class="hero-section">
+
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+
+            <div class="availability">
+                <span class="status-dot"></span>
+                AVAILABLE FOR OPPORTUNITIES
+            </div>
+
+            <div class="developer-label">
+                PYTHON FULL STACK DEVELOPER
+            </div>
+
+            <h1>
+                Hi, I'm <span>Induja.</span>
+                <br>
+                I build things
+                <br>
+                with <span>code.</span>
+            </h1>
+
+            <p class="hero-description">
+                I'm a Python Full Stack Developer passionate about
+                creating modern, responsive and user-friendly web
+                applications.
+            </p>
+
+            <div class="skill-tags">
+                <span>Python</span>
+                <span>Django</span>
+                <span>JavaScript</span>
+                <span>React</span>
+                <span>SQL</span>
+                <span>HTML & CSS</span>
+            </div>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'about' %}" class="primary-btn">
+                    Know More
+                    <span>↗</span>
+                </a>
+
+                <a href="{% url 'contact' %}" class="secondary-btn">
+                    Let's Connect
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+                <span></span>
+                Turning ideas into functional digital experiences.
+            </div>
+
+        </div>
+
+
+        <!-- VIRTUAL INDU -->
+        <div class="virtual-wrapper">
+
+            <div class="virtual-card">
+
+                <!-- HEADER -->
+                <div class="virtual-header">
+
+                    <div class="virtual-brand">
+
+                        <div class="virtual-logo">
+                            VI
+                        </div>
+
+                        <div>
+                            <h3>VirtualINDU</h3>
+                            <p>AI Personal Assistant</p>
+                        </div>
+
+                    </div>
+
+                    <div class="online-status">
+                        <span></span>
+                        Online
+                    </div>
+
+                </div>
+
+
+                <!-- AI AREA -->
+                <div class="virtual-intro">
+
+                    <div class="ai-orb">
+                        <span>✦</span>
+                    </div>
+
+                    <div class="hello-label">
+                        HELLO THERE
+                    </div>
+
+                    <h2>
+                        I'm <span>VirtualINDU</span>
+                    </h2>
+
+                    <p>
+                        Ask me about Induja's skills, experience,
+                        education or technologies.
+                    </p>
+
+                </div>
+
+
+                <!-- QUICK QUESTIONS -->
+                <div class="quick-questions">
+
+                    <button
+                        type="button"
+                        class="quick-question"
+                        data-question="Tell me about Induja."
+                    >
+                        <span>✦</span>
+                        About Induja
+                    </button>
+
+                    <button
+                        type="button"
+                        class="quick-question"
+                        data-question="What are Induja's skills?"
+                    >
+                        <span>&lt;/&gt;</span>
+                        Skills
+                    </button>
+
+                    <button
+                        type="button"
+                        class="quick-question"
+                        data-question="Tell me about Induja's education."
+                    >
+                        <span>◇</span>
+                        Education
+                    </button>
+
+                    <button
+                        type="button"
+                        class="quick-question"
+                        data-question="Tell me about Induja's experience."
+                    >
+                        <span>✧</span>
+                        Experience
+                    </button>
+
+                </div>
+
+
+                <!-- AI RESPONSE -->
+                <div class="response-box">
+
+                    <div class="response-top">
+
+                        <div class="response-name">
+                            <span class="response-dot"></span>
+                            VirtualINDU
+                        </div>
+
+                        <button
+                            type="button"
+                            id="speakBtn"
+                            class="speak-btn"
+                            title="Listen to response"
+                        >
+                            🔊
+                        </button>
+
+                    </div>
+
+                    <p id="aiResponse">
+                        Hi! I'm VirtualINDU. Ask me anything about
+                        Induja and I'll be happy to help.
+                    </p>
+
+                </div>
+
+
+                <!-- INPUT -->
+                <form
+                    class="ai-input-wrapper"
+                    id="aiForm"
+                    data-api-url="{% url 'virtualindu_api' %}"
+                >
+
+                    <input
+                        type="text"
+                        id="aiInput"
+                        placeholder="Ask VirtualINDU anything..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="micBtn"
+                        class="mic-btn"
+                        title="Speak to VirtualINDU"
+                    >
+                        🎙
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="sendBtn"
+                        class="send-btn"
+                        title="Send"
+                    >
+                        ➤
+                    </button>
+
+                </form>
+
+
+                <div
+                    class="ai-status"
+                    id="aiStatus"
+                >
+                    VirtualINDU is ready to help.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHAT I DO -->
+    <section class="services-section">
+
+        <div class="section-heading">
+
+            <span>WHAT I DO</span>
+
+            <h2>
+                Building with
+                <strong>purpose.</strong>
+            </h2>
+
+            <p>
+                I combine frontend creativity with backend
+                development to create reliable digital experiences.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service-card">
+
+                <span class="service-number">01</span>
+
+                <div class="service-icon">
+                    &lt;/&gt;
+                </div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Creating responsive and user-friendly
+                    websites using modern web technologies.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <span class="service-number">02</span>
+
+                <div class="service-icon">
+                    PY
+                </div>
+
+                <h3>Python & Django</h3>
+
+                <p>
+                    Building backend applications, APIs and
+                    database-driven systems using Python and Django.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <span class="service-number">03</span>
+
+                <div class="service-icon">
+                    AI
+                </div>
+
+                <h3>AI Experiences</h3>
+
+                <p>
+                    Creating interactive AI-powered experiences
+                    that make websites smarter and more engaging.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="{% static 'js/home.js' %}"></script>
+
+{% endblock %}
