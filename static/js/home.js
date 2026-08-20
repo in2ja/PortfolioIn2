@@ -469,206 +469,195 @@ document.addEventListener("DOMContentLoaded", () => {
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
 
-
     if (!SpeechRecognition) {
 
-        console.error(
-            "Speech Recognition is not supported."
-        );
+        console.error("Speech Recognition is not supported.");
+
+        if (micBtn) {
+            micBtn.addEventListener("click", () => {
+                status.textContent =
+                    "Please use Google Chrome for microphone input.";
+            });
+        }
+
+    } else {
+
+        recognition = new SpeechRecognition();
+
+        // Important settings for Chrome + Render
+        recognition.lang = "en-IN";
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.maxAlternatives = 1;
+
+        let finalTranscript = "";
+
+        // =========================================================
+        // MICROPHONE START
+        // =========================================================
+
+        recognition.onstart = () => {
+
+            isListening = true;
+
+            finalTranscript = "";
+
+            micBtn.textContent = "🔴";
+            micBtn.classList.add("listening");
+
+            status.textContent =
+                "Listening... speak now.";
+        };
+
+
+        // =========================================================
+        // MICROPHONE RESULT
+        // =========================================================
+
+        recognition.onresult = (event) => {
+
+            let interimTranscript = "";
+
+            for (
+                let i = event.resultIndex;
+                i < event.results.length;
+                i++
+            ) {
+
+                const transcript =
+                    event.results[i][0].transcript;
+
+                if (event.results[i].isFinal) {
+
+                    finalTranscript += transcript + " ";
+
+                } else {
+
+                    interimTranscript += transcript;
+                }
+            }
+
+            const completeTranscript =
+                (
+                    finalTranscript +
+                    interimTranscript
+                ).trim();
+
+            if (!completeTranscript) {
+                return;
+            }
+
+            console.log(
+                "Microphone heard:",
+                completeTranscript
+            );
+
+            // Show what the user is saying immediately
+            input.value = completeTranscript;
+
+            status.textContent =
+                "Listening...";
+        };
+
+
+        // =========================================================
+        // MICROPHONE ERROR
+        // =========================================================
+
+        recognition.onerror = (event) => {
+
+            console.error(
+                "Microphone error:",
+                event.error
+            );
+
+            isListening = false;
+
+            micBtn.textContent = "🎙";
+            micBtn.classList.remove("listening");
+
+            if (event.error === "not-allowed") {
+
+                status.textContent =
+                    "Microphone permission is blocked. Allow microphone access in Chrome.";
+
+            } else if (event.error === "no-speech") {
+
+                status.textContent =
+                    "I didn't hear anything. Please try again.";
+
+            } else if (event.error === "audio-capture") {
+
+                status.textContent =
+                    "No microphone was detected.";
+
+            } else if (event.error === "network") {
+
+                status.textContent =
+                    "Speech recognition network error. Please check your internet connection.";
+
+            } else {
+
+                status.textContent =
+                    "Microphone error. Please try again.";
+            }
+        };
+
+
+        // =========================================================
+        // MICROPHONE END
+        // =========================================================
+
+        recognition.onend = () => {
+
+            isListening = false;
+
+            micBtn.textContent = "🎙";
+            micBtn.classList.remove("listening");
+
+            const question =
+                finalTranscript.trim();
+
+            console.log(
+                "Final voice question:",
+                question
+            );
+
+            // Send only after recognition has finished
+            if (question) {
+
+                input.value = question;
+
+                status.textContent =
+                    "Question received.";
+
+                askVirtualIndu(question);
+
+            } else {
+
+                if (
+                    status.textContent ===
+                    "Listening..."
+                ) {
+
+                    status.textContent =
+                        "VirtualINDU is ready to help.";
+                }
+            }
+        };
+
+
+        // =========================================================
+        // MICROPHONE BUTTON
+        // =========================================================
 
         if (micBtn) {
 
-            micBtn.addEventListener(
-                "click",
-                () => {
-
-                    status.textContent =
-                        "Please use Google Chrome for microphone input.";
-
-                }
-            );
-        }
-
-        return;
-    }
-
-
-    // =========================================================
-    // CREATE MICROPHONE
-    // =========================================================
-
-    recognition =
-        new SpeechRecognition();
-
-
-    recognition.lang = "en-IN";
-
-    recognition.continuous = false;
-
-    recognition.interimResults = false;
-
-    recognition.maxAlternatives = 1;
-
-
-    // =========================================================
-    // MICROPHONE START
-    // =========================================================
-
-    recognition.onstart = () => {
-
-        isListening = true;
-
-        micBtn.textContent = "🔴";
-
-        micBtn.classList.add("listening");
-
-        status.textContent =
-            "Listening... speak now.";
-    };
-
-
-    // =========================================================
-    // MICROPHONE RESULT
-    // =========================================================
-
-    recognition.onresult = (event) => {
-
-        const result =
-            event.results[0];
-
-        if (!result) {
-            return;
-        }
-
-
-        const transcript =
-            result[0]
-                .transcript
-                .trim();
-
-
-        if (!transcript) {
-            return;
-        }
-
-
-        console.log(
-            "Microphone heard:",
-            transcript
-        );
-
-
-        // Put voice text into input
-        input.value = transcript;
-
-
-        status.textContent =
-            "Question received.";
-
-
-        // Send question
-        askVirtualIndu(transcript);
-    };
-
-
-    // =========================================================
-    // MICROPHONE ERROR
-    // =========================================================
-
-    recognition.onerror = (event) => {
-
-        console.error(
-            "Microphone error:",
-            event.error
-        );
-
-
-        isListening = false;
-
-        micBtn.textContent = "🎙";
-
-        micBtn.classList.remove("listening");
-
-
-        if (event.error === "not-allowed") {
-
-            status.textContent =
-                "Microphone permission is blocked. Allow microphone access in Chrome.";
-
-        }
-
-        else if (event.error === "no-speech") {
-
-            status.textContent =
-                "I didn't hear anything. Please try again.";
-
-        }
-
-        else if (event.error === "audio-capture") {
-
-            status.textContent =
-                "No microphone was detected.";
-
-        }
-
-        else if (event.error === "network") {
-
-            status.textContent =
-                "Microphone network error. Please try again.";
-
-        }
-
-        else {
-
-            status.textContent =
-                "Microphone error. Please try again.";
-        }
-    };
-
-
-    // =========================================================
-    // MICROPHONE END
-    // =========================================================
-
-    recognition.onend = () => {
-
-        isListening = false;
-
-        micBtn.textContent = "🎙";
-
-        micBtn.classList.remove("listening");
-
-        /*
-         * Don't overwrite an important status message.
-         */
-
-        if (
-            status.textContent ===
-            "Listening... speak now."
-        ) {
-
-            status.textContent =
-                "VirtualINDU is ready to help.";
-        }
-    };
-
-
-    // =========================================================
-    // MICROPHONE BUTTON
-    // =========================================================
-
-    if (micBtn) {
-
-        micBtn.addEventListener(
-            "click",
-            async (event) => {
+            micBtn.addEventListener("click", (event) => {
 
                 event.preventDefault();
 
-                /*
-                 * If already listening, stop.
-                 */
-
+                // If already listening → stop
                 if (isListening) {
 
                     try {
@@ -681,46 +670,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /*
-                 * Stop VirtualINDU speaking before
-                 * starting microphone.
-                 */
-
+                // Stop VirtualINDU speaking
                 stopSpeaking();
 
                 isMuted = true;
 
+                finalTranscript = "";
 
                 /*
-                 * Ask browser for microphone permission.
+                 * IMPORTANT:
+                 * Start SpeechRecognition directly inside
+                 * the microphone button click.
                  *
-                 * This is important because Chrome may
-                 * otherwise block SpeechRecognition.
-                 */
-
-                try {
-
-                    await navigator.mediaDevices
-                        .getUserMedia({
-                            audio: true
-                        });
-
-                } catch (error) {
-
-                    console.error(
-                        "Microphone permission error:",
-                        error
-                    );
-
-                    status.textContent =
-                        "Please allow microphone access in Chrome.";
-
-                    return;
-                }
-
-
-                /*
-                 * Start speech recognition.
+                 * Do NOT put recognition.start()
+                 * after an await getUserMedia().
                  */
 
                 try {
@@ -737,10 +700,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     status.textContent =
                         "Could not start microphone. Please try again.";
                 }
-            }
-        );
+            });
+        }
     }
 
+
+    // =========================================================
+    // INITIAL STATUS
+    // =========================================================s
 
     // =========================================================
     // INITIAL STATUS
