@@ -516,49 +516,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         recognition.onresult = (event) => {
 
-            let interimTranscript = "";
+            let transcript = "";
 
-            for (
-                let i = event.resultIndex;
-                i < event.results.length;
-                i++
-            ) {
+            // Read all current recognition results
+            for (let i = event.resultIndex; i < event.results.length; i++) {
 
-                const transcript =
-                    event.results[i][0].transcript;
-
-                if (event.results[i].isFinal) {
-
-                    finalTranscript += transcript + " ";
-
-                } else {
-
-                    interimTranscript += transcript;
-                }
+                transcript += event.results[i][0].transcript;
             }
 
-            const completeTranscript =
-                (
-                    finalTranscript +
-                    interimTranscript
-                ).trim();
+            transcript = transcript.trim();
 
-            if (!completeTranscript) {
+            if (!transcript) {
                 return;
             }
 
-            console.log(
-                "Microphone heard:",
-                completeTranscript
-            );
+            console.log("Microphone heard:", transcript);
 
-            // Show what the user is saying immediately
-            input.value = completeTranscript;
+            // Show the current transcript
+            input.value = transcript;
 
-            status.textContent =
-                "Listening...";
+            status.textContent = "Listening...";
         };
-
 
         // =========================================================
         // MICROPHONE ERROR
@@ -615,34 +593,20 @@ document.addEventListener("DOMContentLoaded", () => {
             micBtn.textContent = "🎙";
             micBtn.classList.remove("listening");
 
-            const question =
-                finalTranscript.trim();
+            const question = input.value.trim();
 
-            console.log(
-                "Final voice question:",
-                question
-            );
+            console.log("Final voice question:", question);
 
-            // Send only after recognition has finished
             if (question) {
 
-                input.value = question;
-
-                status.textContent =
-                    "Question received.";
+                status.textContent = "Question received.";
 
                 askVirtualIndu(question);
 
             } else {
 
-                if (
-                    status.textContent ===
-                    "Listening..."
-                ) {
-
-                    status.textContent =
-                        "VirtualINDU is ready to help.";
-                }
+                status.textContent =
+                    "VirtualINDU is ready to help.";
             }
         };
 
