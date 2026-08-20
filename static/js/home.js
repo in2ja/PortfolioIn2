@@ -525,6 +525,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             transcript = transcript.trim();
+            // Fix common speech-recognition mistake
+            transcript = transcript.replace(/\bhinduja\b/gi, "Induja");
 
             if (!transcript) {
                 return;
